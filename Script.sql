@@ -53,3 +53,37 @@ SELECT * FROM `aliment`;
 
 UPDATE `aliment` SET `nom` = 'pomme golden' WHERE `id` = '2';
 
+DELETE FROM `aliment` WHERE `id` = '2';
+
+SELECT * 
+FROM aliment 
+WHERE (calories < 90)  AND (sucre >10) 
+ORDER BY calories DESC;
+
+SELECT COUNT(*) 
+FROM utilisateur 
+WHERE email LIKE "%gmail.com";
+
+SELECT COUNT(DISTINCT nom) 
+FROM aliment 
+WHERE nom LIKE "%pomme%";
+
+SELECT COUNT(DISTINCT nom)  AS "produits différents contenant le mot pomme"
+FROM aliment 
+WHERE nom LIKE "%pomme%";
+
+SELECT AVG(calories) AS "calories moyennes des aliments > 30g"
+FROM aliment 
+WHERE calories > 30;
+
+CREATE VIEW utilisateurs_gmail_vw AS 
+    (   SELECT * 
+        FROM utilisateur 
+        WHERE email LIKE "%gmail.com"
+    );
+    
+SELECT * FROM utilisateurs_gmail_vw;
+    
+SELECT * 
+FROM utilisateurs_gmail_vw 
+WHERE prenom LIKE "%m%";
